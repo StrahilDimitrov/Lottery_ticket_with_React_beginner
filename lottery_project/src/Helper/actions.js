@@ -15,3 +15,27 @@ export function registerTicket() {
         }
     });
 }
+
+export function removeTicket(index) {
+    this.setState((prevState) => {
+        prevState.tickets.splice(index, 1);
+
+        return {
+            tickets: prevState.tickets,
+            remaningTickets: ++prevState.remaningTickets
+        }
+    });
+}
+
+export function finish() {
+    this.setState({ finished: true });
+}
+
+export function reset() {
+    this.setState({
+        winningNumber: getRandomNumber(),
+        tickets: [],
+        remaningTickets: 5,
+        finished: false
+    });
+}
