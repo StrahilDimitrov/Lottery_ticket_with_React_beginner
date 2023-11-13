@@ -1,23 +1,20 @@
 import React, { Component } from "react";
 import LotteryTicket from "./LotteryTicket";
 
-class Lottery extends Component {
+class Lotter extends Component {
     renderButton() {
-        const { remainingTickets, actions } = this.props;
-        if (remainingTickets > 0) {
-            return <button onClick={actions.registerTicket}>Изтегли число</button>
+        const { remaningTickets, actions } = this.props;
+        if (this.props.remaningTickets > 0) {
+            return <button onClick={actions.registerTicket}>КУПИ БИЛЕТ</button>
         }
     }
 
     renderTickets() {
-        const { tickets, actions } = this.props;
-        const lotteryTicketsActions = { removeTicket: actions.removeTicket };
-        const lotteryTickets = tickets.map((ticket, index) => {
+        const lotteryTickets = this.props.tickets.map((tickets, index) => {
             return (
                 <LotteryTicket
-                    actions={lotteryTicketsActions}
-                    color={ticket.color}
-                    number={ticket.number}
+                    color={tickets.color}
+                    number={tickets.number}
                     index={index}
                     key={index}
                 />
@@ -30,16 +27,16 @@ class Lottery extends Component {
     render() {
         return (
             <>
-                <h2>ЛОТАРИЯ 5 от 49</h2>
+                <h2>ЛОТАРИА 5 от 49</h2>
                 {this.renderButton()}
                 <br />
-                <small>оставаши: <b>{this.props.remainingTickets}</b></small>
+                <small>оставащи: {this.props.remaningTickets}</small>
                 <br />
                 <hr />
                 {this.renderTickets()}
             </>
-        )
+        );
     }
 }
 
-export default Lottery;
+export default Lotter;
