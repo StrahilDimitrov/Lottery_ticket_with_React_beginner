@@ -4,15 +4,21 @@ import LotteryTicket from "./LotteryTicket";
 class Lotter extends Component {
     renderButton() {
         const { remaningTickets, actions } = this.props;
-        if (this.props.remaningTickets > 0) {
+        if (remaningTickets > 0) {
             return <button onClick={actions.registerTicket}>КУПИ БИЛЕТ</button>
+        }
+        else {
+            return <button onClick={actions.finish}>ПРОВЕРИ ЗА ПЕЧАЛБА</button>
         }
     }
 
     renderTickets() {
-        const lotteryTickets = this.props.tickets.map((tickets, index) => {
+        const { tickets, actions } = this.props;
+        const lotteryTicketAction = { removeTicket: actions.removeTicket };
+        const lotteryTickets = tickets.map((tickets, index) => {
             return (
                 <LotteryTicket
+                    actions={lotteryTicketAction}
                     color={tickets.color}
                     number={tickets.number}
                     index={index}
