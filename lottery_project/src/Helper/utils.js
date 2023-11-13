@@ -3,5 +3,5 @@ export function getRandomNumber() {
 }
 
 export function getRandomColor() {
-    return 'hsl(' + Math.random() * 360 + ', 85%, 75%)';
+    return 'hsl(' + Math.random() * 360 + ',85%, 75%)';
 }
