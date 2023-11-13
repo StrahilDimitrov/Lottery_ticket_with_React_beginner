@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getRandomNumber } from "./Helper/utils";
-import { registerTicket, removeTicket } from "./Helper/actions";
+import { registerTicket } from "./Helper/actions";
 import Lottery from "./components/Lottery";
 import './App.css';
 
@@ -11,37 +11,33 @@ class App extends Component {
     this.state = {
       winningNumber: getRandomNumber(),
       tickets: [],
-      remainingTickets: 5,
+      remaningTickets: 5,
       finished: false
     };
 
     this.registerTicket = registerTicket.bind(this);
-    this.removeTicket = removeTicket.bind(this);
   }
 
   renderApp() {
-    const { tickets, remainingTickets } = this.state;
+    const {tickets, remaningTickets} = this.state;
     const actions = {};
-
     actions.registerTicket = this.registerTicket;
-    actions.removeTicket = this.removeTicket;
-
     return (
       <Lottery
         actions={actions}
-        tickets={tickets}
-        remainingTickets={remainingTickets}
+        tickets = {tickets}
+        remaningTickets={remaningTickets}
       />
-    );
+    )
   }
 
   render() {
-    console.log(this.state.winningNumber);
+    console.log(this.state.tickets);
     return (
       <div className="App">
-         {this.renderApp()}
+        {this.renderApp()}
       </div>
-    );
+    )
   }
 }
 
